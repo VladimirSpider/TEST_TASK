@@ -76,7 +76,9 @@ body{
 .button_user:hover{
     border: 4px solid rgba(255,255,255);
 }
-
+.text{
+    color: white;
+}
 .content{
     background: gray;
     border-radius: 50px;
