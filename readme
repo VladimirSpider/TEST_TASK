@@ -1,0 +1,17 @@
+Для запуска проекта необходимо:
+    1)Виртуальное окружение(создать и запустить!):
+
+    Создание виртуального окружения: python -m venv stvenv (Windows).
+    Запуск виртуального окружения: stvenv\Scripts\activate.bat (Windows).
+    Запуск виртуального окружения: source stvenv/bin/activate (Ubuntu(Linux)).
+    Выход из виртуального окружения: deactivate (Windows / Linux).
+
+    2) Установить джанго(pip install django)
+
+    3) Находясь в корне проекта провести миграции(python manage.py makemigrations и затем python manege.py migrate)
+
+    4) Создать супер пользователя с именем superuser, т.к. это имя заложено в роект для ототбражения меню администратора
+       (python manage.py createsuperuser)
+
+    5) Можно запускать проект
+       (python manage.py runserver)

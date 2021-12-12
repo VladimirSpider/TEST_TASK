@@ -1,0 +1,18 @@
+{% extends 'main/base.html '%}
+{% block title %}
+REGISTRATION PAGE
+{% endblock %}
+
+{% block content %}
+
+        <div class="registration">
+            <h2>Регистрация/Вход/Выход</h2>
+
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <br><button class="button_menu" type="submit">Войти</button>
+            </form>
+        </div>
+
+{% endblock %}

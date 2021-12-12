@@ -1,0 +1,28 @@
+{% extends 'main/base.html '%}
+
+{% block title %}
+{{ employee.last_name }}
+{% endblock %}
+
+{% block content %}
+    <h1>Информация о сотруднике</h1>
+    <h2>{{ employee.first_name }}</h2>
+    <h2>{{ employee.last_name }}</h2>
+    <p>Телефон сотрудника:</p>
+    <p>{{ employee.phone }}</p>
+    <p>{{ employee.department }}</p>
+    <p>Должность: {{ employee.post }}</p>
+    <p>Стаж работы: {{ employee.experience }}</p>
+    <p>Дата приема на работу: {{ employee.date }}</p>
+    <div class="menu_user">
+        <div class="button_admin">
+            <a class="" href="{% url 'employee_update' employee.id %}">Редактирование</a>
+        </div>
+        <div class="button_admin">
+            <a class="" href="{% url 'employee_delete' employee.id %}">Удаление</a>
+        </div>
+        <div class="button_user">
+            <a class="" href="{% url 'staff' %}">НАЗАД</a>
+        </div>
+    </div>
+{% endblock %}

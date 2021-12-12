@@ -1,0 +1,77 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+    <link type="text/css" href="{% static 'main/css/main.css' %}" rel="stylesheet" />
+</head>
+<body>
+    <div class="main">
+        <div class="header">
+            {% if dep_selected == 'registration' %}
+                <div class="button_menu selected"><a href="{% url 'registration_page' %}"><b>Регистрация<br>Вход/Выход</b></a></div>
+            {% else %}
+                <div class="button_menu"><a href="{% url 'registration_page' %}"><b>Регистрация<br>Вход/Выход</b></a></div>
+            {% endif %}
+            <h1 class="name_site">INFOTMATION | USER: {{request.user.username}}</h1>
+        </div>
+        <div class="all_content">
+            <div class="menu">
+                <h1 class="">MENU<br>USER</h1>
+                {% if request.user.is_authenticated%}
+                    {% if dep_selected == 0 %}
+                        <div class="button_menu selected"><a href="">Все отделы</a></div>
+                    {% else %}
+                        <div class="button_menu"><a href="{% url 'home' %}">Все отделы</a></div>
+                    {% endif %}
+
+                    {% for c in departments%}
+                        {% if c.pk == dep_selected %}
+                            <div class="button_menu selected"><a href="">{{ c.title }}</a></div>
+                        {% else %}
+                            <div class="button_menu"><a href="{{c.get_url}}">{{ c.title }}</a></div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+
+                {% if request.user.is_authenticated%}
+                    {% if request.user.username == "superuser" %}
+                        <h1 class="">MENU ADMIN</h1>
+                        {% if dep_selected == 'departments' %}
+                            <div class="button_menu selected">
+                                <a class="" href="">ОТДЕЛЫ</a>
+                            </div>
+                        {% else %}
+                            <div class="button_menu">
+                                <a class="" href="{% url 'departments' %}">ОТДЕЛЫ</a>
+                            </div>
+                        {% endif %}
+
+                        {% if dep_selected == 'staff' %}
+                            <div class="button_menu selected">
+                                <a class="" href="">СОТРУДНИКИ</a>
+                            </div>
+                        {% else %}
+                            <div class="button_menu">
+                                <a class="" href="{% url 'staff' %}">СОТРУДНИКИ</a>
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+
+            </div>
+            <div class="content">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+        <div class="footer">
+            <h1 class="name_site">OUR CONTACTS</h1>
+        </div>
+    </div>
+</body>
+</html>

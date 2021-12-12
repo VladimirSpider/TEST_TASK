@@ -1,0 +1,28 @@
+{% extends 'main/base.html '%}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+    <h2>Сотрудники!</h2>
+    <p>Добро пожаловать!</p>
+    <div class="staff">
+    {% for el in staff %}
+            <div class="employee">
+                <h3>{{ el.last_name }}</h3>
+                <p>{{ el.department }}</p>
+                <div class="menu_user">
+                    <div class="button_user">
+                        <a class="" href="{% url 'employee_detail' el.id %}">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+    {% endfor %}
+    </div>
+    <div class="menu_admin">
+        <div class="button_admin">
+            <a class="" href="{% url 'create_employee' %}">Добавить<br>сотрудника</a>
+        </div>
+    </div>
+{% endblock %}

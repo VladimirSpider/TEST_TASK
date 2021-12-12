@@ -1,0 +1,18 @@
+{% extends 'main/base.html '%}
+{% block title %}
+REGISTRATION PAGE
+{% endblock %}
+
+{% block content %}
+    <div class="registration">
+        <h2>Регистрация/Вход/Выход</h2>
+            <div class="button_registration">
+                {% if request.user.is_authenticated %}
+                    <div class="button_menu"><a class="" href="{% url 'logout' %}"><b>Выйти</b></a></div>
+                {% else %}
+                    <div class="button_menu"><a class="" href="{% url 'Register' %}"><b>Регистрация</b></a></div>
+                    <div class="button_menu"><a class="" href="{% url 'login' %}"><b>Войти</b></a></div>
+                {% endif %}
+            </div>
+    </div>
+{% endblock %}

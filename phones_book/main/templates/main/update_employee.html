@@ -1,0 +1,29 @@
+{% extends 'main/base.html '%}
+
+{% block title %}
+Редактирование
+{% endblock %}
+
+{% block content %}
+    <h2>РЕДАКТИРОВАНИЕ!</h2>
+    <p>Добро пожаловать!</p>
+    <div class="for_employee">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.first_name }}<br>
+            {{ form.last_name }}<br>
+            {{ form.phone }}<br>
+            {{ form.department }}<br>
+            {{ form.post }}<br>
+            {{ form.experience }}<br>
+            {{ form.date }}<br>
+            <span>{{ error }}</span>
+            <button type="submit" class="send">Обновить</button>
+        </form>
+        <div class="menu_admin">
+            <div class="button_admin">
+                    <a class="" href="{% url 'employee_detail' employee.id %}">НАЗАД</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

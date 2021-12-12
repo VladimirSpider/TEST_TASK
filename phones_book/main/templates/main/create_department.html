@@ -1,0 +1,23 @@
+{% extends 'main/base.html '%}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+    <h2>СОЗДАНИЕ ОТДЕЛА!</h2>
+    <p>Добро пожаловать!</p>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.title }}<br>
+        {{ form.description }}<br>
+        {{ form.staff_count }}<br>
+        <span>{{ error }}</span>
+        <button type="submit" class="send">Добавить</button>
+    </form>
+    <div class="menu_admin">
+        <div class="button_admin">
+                <a class="" href="{% url 'departments' %}">НАЗАД</a>
+        </div>
+    </div>
+{% endblock %}

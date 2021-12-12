@@ -1,0 +1,24 @@
+{% extends 'main/base.html '%}
+
+{% block title %}
+{{ department.title }}
+{% endblock %}
+
+{% block content %}
+    <h2>{{ department.title }}</h2>
+    <p>Добро пожаловать!</p>
+    <p>{{ department.description }}</p>
+    <p>Колличество сотруников:</p>
+    <p>{{ department.staff_count }}</p>
+    <div class="menu_user">
+        <div class="button_admin">
+            <a class="" href="{% url 'department_update' department.id %}">Редактирование</a>
+        </div>
+        <div class="button_admin">
+            <a class="" href="{% url 'department_delete' department.id %}">Удаление</a>
+        </div>
+        <div class="button_user">
+            <a class="" href="{% url 'departments' %}">НАЗАД</a>
+        </div>
+    </div>
+{% endblock %}

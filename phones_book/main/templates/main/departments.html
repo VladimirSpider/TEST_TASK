@@ -1,0 +1,28 @@
+{% extends 'main/base.html '%}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+    <h2>ОТДЕЛЫ!</h2>
+    <p>Добро пожаловать!</p>
+    <div class="departments">
+    {% for el in departments %}
+            <div class="department">
+                <h3>{{ el.title }}</h3>
+                <p>{{ el.description|truncatewords:1 }}</p>
+                <div class="menu_user">
+                    <div class="button_user">
+                        <a class="" href="{% url 'department_detail' el.id %}">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+    {% endfor %}
+    </div>
+    <div class="menu_admin">
+        <div class="button_admin">
+            <a class="" href="{% url 'create_department' %}">СОЗДАТЬ<br>ОТДЕЛ</a>
+        </div>
+    </div>
+{% endblock %}

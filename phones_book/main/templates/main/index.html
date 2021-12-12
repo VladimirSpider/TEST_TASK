@@ -1,0 +1,24 @@
+{% extends 'main/base.html '%}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+    <h2>Главная!</h2>
+    <p>Добро пожаловать!</p>
+    <form method="POST" action="">
+        {% csrf_token %}
+        <input type="text" name="search">
+        <button type="submit" class="send">Поиск</button>
+    </form>
+    <div class="for_staff">
+    {% for p in staff %}
+        <div class="staff_of_department">
+            <h3>Сотрудник отдела: {{ p.department }}</h3>
+            <p>{{p.first_name}} {{p.last_name}}</p>
+            <p>{{p.phone}}</p>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}
